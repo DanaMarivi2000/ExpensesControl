@@ -41,7 +41,7 @@ const {dispatch}=useBudget()
       
       >
     <>
-      <div className="bg-white shadow-lg p10 w-full border-b border-gray-200">
+      <div className="bg-white shadow-lg p-5 w-full border-b border-gray-200">
         <div>
          <img src={`/icono_${categoryInfo.icon}.svg`} alt={`${categoryInfo.name}`} />
         </div>
