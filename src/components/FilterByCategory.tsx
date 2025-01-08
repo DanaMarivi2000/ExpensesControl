@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react'
+import { ChangeEvent } from 'react'
 import { categories } from '../data/categories'
 import { useBudget } from '../hooks/useBudget'
 
