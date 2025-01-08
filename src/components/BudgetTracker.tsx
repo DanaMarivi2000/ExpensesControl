@@ -1,6 +1,5 @@
 import { useBudget } from "../hooks/useBudget"
 import AmountDisplay from "./AmountDisplay"
-import { useMemo } from "react"
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar"
 import 'react-circular-progressbar/dist/styles.css'
 
