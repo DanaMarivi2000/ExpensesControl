@@ -7,7 +7,7 @@ import { DraftExpense } from '../types'
 import ErrorMesage from './ErrorMesage'
 import { useBudget } from '../hooks/useBudget'
 const ExpenseForm = () => {
-const{state,dispatch}=useBudget()
+const{state,dispatch, available}=useBudget()
     const[expense, setExpense]=useState<DraftExpense>({
         amount:0,
         expenseName:"",
@@ -15,11 +15,12 @@ const{state,dispatch}=useBudget()
         date:new Date()
     })
     const [error, setError]=useState("")
-   
+    const [previousAmount, setPreviousAmount]=useState(0)
     useEffect(()=>{
       if(state.editingId){
         const editingExpense=state.expenses.filter(currentExpense=>currentExpense.id===state.editingId)[0]
             setExpense(editingExpense)
+            setPreviousAmount(editingExpense.amount)
         }
     },[state.editingId])
    
@@ -41,16 +42,27 @@ const handleSubmit=(e:React.FormEvent<HTMLFormElement>)=>{
     setError("Todos los cambos son obligatorios")
       return 
   }
+  if((expense.amount-previousAmount)>available){
+    setError('No alcanza el presupuesto')
+    return
+  }
   if(state.editingId){
     dispatch({type:'update-expense', payload:{expense:{id:state.editingId, ...expense}}})
   }else{
     dispatch({type:'add-expense', payload:{expense:expense}})
  }
+   setExpense({
+    amount:0,
+    expenseName:"",
+   category:"",
+   date:new Date() 
+  })
+  setPreviousAmount(0)
 }
   return (
     <>
       <form className='space-y-5' onSubmit={handleSubmit}>
-        <legend className='uppercase text-center text-2xl font-black border-b-4 border-blue-500 py-2'>Nuevo Gasto</legend>
+        <legend className='uppercase text-center text-2xl font-black border-b-4 border-blue-500 py-2'>{state.editingId?'Guardar cambios':'Nuevo Gasto'}</legend>
        
        {error&&<ErrorMesage>{error}</ErrorMesage>}
 
@@ -90,7 +102,7 @@ const handleSubmit=(e:React.FormEvent<HTMLFormElement>)=>{
       </div>
       <input type="submit"
       className='bg-blue-600 cursor-pointer w-full p-2 text-white uppercase font-bold rounded-lg'
-      value={'Registrar Gasto'}
+      value={state.editingId?'Guardar Cambios':'Registrar Gasto'}
       />
       </form>
     </>

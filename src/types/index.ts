@@ -4,6 +4,8 @@ import { BudgetActions, BudgetState } from "../reducers/budget-reducer"
 export type budgetContext={
     state:BudgetState,
     dispatch:Dispatch<BudgetActions>
+    totalExpenses:number,
+    available:number,
 }
 
 type ValuePiece=Date|null
