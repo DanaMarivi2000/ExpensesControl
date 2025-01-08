@@ -100,7 +100,8 @@ export const budgetReducer=(state:BudgetState=initialState, action:BudgetActions
         budget:0,
         modal:false,
         expenses:[],
-        editingId:''
+        editingId:'',
+        id:""
        } 
     }
     if(action.type==='add-filter-category'){

@@ -1,4 +1,4 @@
-import { PropsWithChildren, ReactNode } from "react"
+import { PropsWithChildren} from "react"
 
 const ErrorMesage = ({children}:PropsWithChildren) => {
   return (

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { categories } from '../data/categories'
 import DatePicker from 'react-datepicker'
-import 'react-datepicker/dist/DatePicker.css'
+import "react-datepicker/dist/react-datepicker.css";
 import 'react-calendar/dist/Calendar.css'
 import { DraftExpense } from '../types'
 import ErrorMesage from './ErrorMesage'
