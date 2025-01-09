@@ -38,7 +38,7 @@ const handleChangeDate=(date:Date|null)=>{
 const handleSubmit=(e:React.FormEvent<HTMLFormElement>)=>{
   e.preventDefault()
 
-  if(Object.values(expense).includes('')||expense.amount===0){
+  if(Object.values(expense).includes('')){
     setError("Todos los campos son obligatorios")
       return 
   }
