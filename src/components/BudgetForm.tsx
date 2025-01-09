@@ -7,18 +7,17 @@ const BudgetForm = () => {
     const[budget, setBudget]=useState(0)
     const {dispatch}=useBudget()
     const handleChange=(e: ChangeEvent<HTMLInputElement>)=>{
-        setBudget(e.target.valueAsNumber)
+        setBudget(e.target.value===""?0:+e.target.value)
     }
 
     const isValid=useMemo(()=>{
-        return isNaN(Number(budget)) || Number(budget) <= 0;
+        return budget<= 0;
     },[budget])
 
     const handleSubmit=(e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
         dispatch({type:'add-budget', payload:{budget}})
     }
-
 
     return (
     <>
@@ -31,7 +30,7 @@ const BudgetForm = () => {
                 className="w-full bg-white border border-gray-200 p-2"
                 placeholder="Define tu presupuesto"
                 name="budget"
-                value={budget}
+                value={budget===0?"":budget}
                 onChange={handleChange}
             />
             </div>
