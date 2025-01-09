@@ -11,7 +11,7 @@ const BudgetForm = () => {
     }
 
     const isValid=useMemo(()=>{
-        return isNaN(budget) || budget<=0
+        return isNaN(Number(budget)) || Number(budget) <= 0;
     },[budget])
 
     const handleSubmit=(e:React.FormEvent<HTMLFormElement>)=>{

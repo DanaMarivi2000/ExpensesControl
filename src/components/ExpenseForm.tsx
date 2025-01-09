@@ -26,7 +26,7 @@ const{state,dispatch, available}=useBudget()
    
     const handleChange=(e:React.ChangeEvent<HTMLInputElement>|React.ChangeEvent<HTMLSelectElement>)=>{
         const {name, value}=e.target
-        const isAmountField=['amount'.includes(name)]
+        const isAmountField=['amount'].includes(name)
         setExpense({...expense,[name]:isAmountField ? +value:value})
     }
 
@@ -68,15 +68,14 @@ const handleSubmit=(e:React.FormEvent<HTMLFormElement>)=>{
 
         <div className="flex flex-col gap-2">
             <label htmlFor="expenseName" className="text-xl">Nombre Gasto: </label>
-            <input 
-            type="text" 
+           <input type="text" 
             placeholder='Añade el nombre del gasto'
             className='bg-slate-100 p-2'
             id='expenseName'
             name='expenseName'
             value={expense.expenseName}
             onChange={handleChange}
-/>          
+            />       
         </div>
       <div className="flex flex-col gap-2">
         <label htmlFor="amount" className='text-xl'>Cantidad:</label>

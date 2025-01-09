@@ -13,8 +13,9 @@ type ExpenseDetailProps={
 }
 const ExpenseDetail = ({expense}:ExpenseDetailProps) => {
 const {dispatch}=useBudget()
-  const categoryInfo=useMemo(()=>categories.filter(category=>category.id===expense.id)[0],[expense])
-
+  const categoryInfo=useMemo(()=>categories.filter(category=>category.id===expense.category)[0],[expense])
+  console.log(categoryInfo)
+  console.log(expense.category)
   const leadingActions=()=>(
     <LeadingActions>
       <SwipeAction onClick={()=>{dispatch({type:'get-expense-by-id', payload:{id:expense.id}})}} >
@@ -43,7 +44,7 @@ const {dispatch}=useBudget()
     <>
       <div className="bg-white shadow-lg p-5 w-full border-b border-gray-200">
         <div>
-         <img src={`/icono_${categoryInfo.icon}.svg`} alt={`${categoryInfo.name}`} />
+         <img src={`/icono_${categoryInfo.icon}.svg`} alt="imagen" />
         </div>
         <div className='flex-1 space-y-2'>
             <p className='text-sm font-bold uppercase text-slate-500'>{categoryInfo.name}</p>
