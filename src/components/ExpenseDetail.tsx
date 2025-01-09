@@ -42,9 +42,9 @@ const {dispatch}=useBudget()
       
       >
     <>
-      <div className="bg-white shadow-lg p-5 w-full border-b border-gray-200">
+      <div className="bg-white shadow-lg p-5 w-full border-t border-gray-200 flex gap-5 items-center">
         <div>
-         <img src={`/icono_${categoryInfo.icon}.svg`} alt="imagen" />
+         <img src={`/icono_${categoryInfo.icon}.svg`} alt="imagen" width={80}/>
         </div>
         <div className='flex-1 space-y-2'>
             <p className='text-sm font-bold uppercase text-slate-500'>{categoryInfo.name}</p>

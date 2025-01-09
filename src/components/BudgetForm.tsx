@@ -9,7 +9,7 @@ const BudgetForm = () => {
     const handleChange=(e: ChangeEvent<HTMLInputElement>)=>{
         setBudget(e.target.value===""?0:+e.target.value)
     }
-
+    console.log(budget)
     const isValid=useMemo(()=>{
         return budget<= 0;
     },[budget])
